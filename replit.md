@@ -18,13 +18,33 @@ This is an advanced remote sensing and geophysics pipeline for monitoring ground
 4. **Phase 4**: Kinematics analysis (strain, slip surface inversion, alerts)
 5. **Phase 5**: Report generation and visualization
 
+## Web Interface
+
+A community-facing Flask web portal serves real pipeline outputs at port 5000.
+
+```bash
+python3 web_app.py
+```
+
+### Features
+- **Live map** (Leaflet.js, CartoDB dark tiles) — AOI boundary + P1/P2/P3 hotspot markers with popups
+- **Real time-series chart** (Chart.js) — displacement at each hotspot from `data/processed/displacement.npy`
+- **KPI cards** — monitoring points, alert count, max velocity, daily records (all from pipeline outputs)
+- **Alert banner** — shown when `alert_count > 0` from latest summary report
+- **Hotspot risk cards** — clickable, fly to location on map, show E_max/V_max from pipeline
+- **Report downloads** — serves `outputs/figures/*.png` via `/api/download/<filename>`
+- **Run Pipeline button** — triggers `run_pipeline.py` in background via `/api/run-pipeline`
+- **Auto-refresh** — reloads `/api/data` every 60 seconds
+
 ## Project Structure
 
 ```
-run_pipeline.py         # Main entry point — runs all 5 phases
+web_app.py              # Flask community portal (port 5000)
+templates/index.html    # Dashboard HTML (Tailwind CDN, Leaflet, Chart.js)
+run_pipeline.py         # Main pipeline entry point — runs all 5 phases
 run_input_data_audit.py # Data audit utility
 config/
-  settings.py           # Central configuration (AOI, parameters)
+  settings.py           # Central configuration (AOI, HOTSPOTS, parameters)
   gee_config.yaml       # Google Earth Engine config
 src/
   sbas/                 # P-SBAS processing
@@ -44,6 +64,10 @@ logs/                   # Pipeline logs
 ## Running
 
 ```bash
+# Community web portal
+python3 web_app.py
+
+# Science pipeline
 python3 run_pipeline.py
 ```
 

@@ -326,7 +326,7 @@ export function Dashboard() {
             <Card className="bg-slate-900 border-slate-800 hover:border-cyan-500/30 transition-colors group cursor-pointer">
               <CardContent className="p-5 flex items-center gap-4">
                 <div className="p-3 bg-cyan-500/10 rounded-lg group-hover:bg-cyan-500/20 transition-colors">
-                  <MapIcon className="h-6 w-6 text-cyan-400" />
+                  <MapPin className="h-6 w-6 text-cyan-400" />
                 </div>
                 <div className="flex-1">
                   <h4 className="font-medium text-slate-200">Báo cáo vận tốc</h4>
