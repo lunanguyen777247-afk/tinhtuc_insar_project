@@ -1,0 +1,288 @@
+====================================================================================================
+SAR-BASED FLOOD RISK ASSESSMENT PIPELINE
+End-to-End Architecture for Tĩnh Túc Mining Region
+====================================================================================================
+Generated: 2026-04-24 20:50:30
+
+----------------------------------------------------------------------------------------------------
+LEVEL 1: DATA FLOW OVERVIEW
+----------------------------------------------------------------------------------------------------
+
+Input: GEE Sentinel-1 GRD (VV, VH)
+
+[LAYER 1: DATA INGESTION & AUDIT]
+  - Input Data Audit
+  - Metadata extraction
+  - Dataset separation (ASC/DESC)
+  - Quality assessment
+
+[LAYER 2: PREPROCESSING]
+  - Radiometric calibration (sigma0)
+  - Speckle filtering (Lee/Gamma)
+  - Terrain correction (DEM)
+  - Coregistration (ASC/DESC if fusion)
+
+[LAYER 3: FEATURE EXTRACTION & DETECTION]
+  - Backscatter change index
+  - Water surface detection (threshold)
+  - Time series filtering (Kalman/median)
+  - Change point detection (CUSUM)
+  - Anomaly scoring (z-score / MAD)
+
+[LAYER 4: DECISION & FUSION]
+  - Per-pixel classification (water/non-water)
+  - Morphological filtering (remove noise)
+  - Confidence scoring
+  - ASC/DESC fusion (if dual-track)
+
+[LAYER 5: ANALYSIS & ASSESSMENT]
+  - Water extent mapping
+  - Trend analysis (temporal ramps)
+  - Volume/area estimation
+  - Risk severity classification
+  - Early warning generation
+
+[LAYER 6: VALIDATION & QUALITY ASSURANCE]
+  - Accuracy assessment (confusion matrix)
+  - Cross-validation (ASC vs DESC)
+  - Ground truth comparison (if available)
+  - Performance reporting
+
+OUTPUT PRODUCTS:
+  - Water extent maps (GeoTIFF)
+  - Time series datasets (NetCDF)
+  - Risk maps & alert bulletins (JSON/GeoJSON)
+  - Analysis reports (PDF/HTML)
+  - Visualizations (PNG/SVG)
+
+====================================================================================================
+LEVEL 2: MODULAR PIPELINE STRUCTURE
+====================================================================================================
+
+python_pipeline/
+├── src/
+│   ├── data_audit/
+│   │   ├── input_data_audit.py         [Audit & metadata extraction]
+│   │   ├── dataset_separation.py       [Split ASC/DESC]
+│   │   └── experiment_scenarios.py     [Design analysis scenarios]
+│   │
+│   ├── preprocessing/
+│   │   ├── radiometric_calibration.py  [Convert DN → sigma0]
+│   │   ├── speckle_filters.py          [Lee/Gamma/NL-means filtering]
+│   │   ├── terrain_correction.py       [Terrain geocoding (DEM-based)]
+│   │   └── coregistration.py           [Align multi-temporal images]
+│   │
+│   ├── feature_extraction/
+│   │   ├── backscatter_indices.py      [Change index, water index]
+│   │   ├── water_detection.py          [Threshold-based classifier]
+│   │   ├── temporal_filtering.py       [Kalman, median, outlier removal]
+│   │   └── changepoint_detection.py    [CUSUM, Bayesian change point]
+│   │
+│   ├── analysis/
+│   │   ├── time_series_analysis.py     [Trend fitting, forecasting]
+│   │   ├── anomaly_detection.py        [Z-score, MAD, isolation forest]
+│   │   ├── area_volume_estimation.py   [Water extent → area/volume]
+│   │   └── risk_assessment.py          [Severity classification]
+│   │
+│   ├── fusion/
+│   │   ├── asc_desc_fusion.py          [Combine ASC and DESC results]
+│   │   ├── confidence_scoring.py       [Per-pixel confidence]
+│   │   └── ensemble_methods.py         [Voting/weighted ensemble]
+│   │
+│   ├── validation/
+│   │   ├── accuracy_assessment.py      [Confusion matrix, metrics]
+│   │   ├── cross_validation.py         [K-fold, temporal CV]
+│   │   └── ground_truth_comparison.py  [Compare vs field data]
+│   │
+│   └── utils/
+│       ├── io_utils.py                 [Data I/O (GEE, files)]
+│       ├── geo_utils.py                [Geospatial operations]
+│       ├── visualization.py            [Maps, plots, dashboards]
+│       └── config.py                   [Centralized parameters]
+│
+├── notebooks/
+│   ├── 01_scenario1_analysis.ipynb     [Before-after comparison]
+│   ├── 02_scenario2_timeseries.ipynb   [Full time series analysis]
+│   ├── 03_scenario3_asc_desc.ipynb     [ASC vs DESC validation]
+│   └── 04_scenario4_anomaly.ipynb      [Real-time alerting]
+│
+├── config/
+│   ├── settings.py                     [Global parameters]
+│   ├── processing_params.yaml          [Algorithm tuning]
+│   └── aoi_config.yaml                 [Study region definitions]
+│
+├── data/
+│   ├── raw/
+│   │   ├── sentinel1/ascending/
+│   │   ├── sentinel1/descending/
+│   │   ├── dem/
+│   │   └── reference_data/
+│   ├── processed/
+│   │   ├── preprocessed/
+│   │   ├── features/
+│   │   └── results/
+│   └── external/
+│       ├── rainfall/
+│       └── ground_truth/
+│
+├── outputs/
+│   ├── data_audit/
+│   ├── dataset_separation/
+│   ├── scenario_1_results/
+│   ├── scenario_2_results/
+│   ├── scenario_3_results/
+│   ├── scenario_4_results/
+│   └── reports/
+│
+└── scripts/
+    ├── run_full_pipeline.py            [End-to-end orchestrator]
+    ├── run_single_scenario.py           [Run one scenario]
+    └── deploy_operational_system.py    [Deploy alerting system]
+
+====================================================================================================
+LEVEL 3: KEY PROCESSING STEPS
+====================================================================================================
+
+SCENARIO 1: BEFORE-AFTER ANALYSIS
+---
+Input:  reference_image (dry) + current_image (wet) + DEM
+Step 1: Radiometric calibration
+Step 2: Speckle filtering (Lee 3x3)
+Step 3: Calculate change index = (I_wet - I_dry) / I_dry
+Step 4: Thresholding (change_index < -0.1 → water)
+Step 5: Morphological operations (clean noise)
+Output: water_extent_map.tif + change_magnitude.tif
+Duration: 2-3 hours per image pair
+
+SCENARIO 2: TIME SERIES ANALYSIS
+---
+Input:  [Image_1, ..., Image_N] (N~1300 ASCENDING images) + DEM
+Step 1: Batch preprocessing (radiometric + speckle filtering)
+Step 2: Create backscatter time series
+Step 3: Temporal filtering (Kalman or median)
+Step 4: Change point detection (CUSUM)
+Step 5: Water detection per time step
+Step 6: Compute water extent time series
+Step 7: Trend analysis (linear regression)
+Step 8: Anomaly detection & alerting
+Output: water_extent_timeseries.tif + trend_map.tif + alerts
+Duration: 1-2 weeks
+
+SCENARIO 3: ASC vs DESC COMPARISON
+---
+Input:  ASCENDING [1304] + DESCENDING [1253] + DEM
+Step 1: Process ASCENDING independently
+Step 2: Process DESCENDING independently
+Step 3: Co-register both to common UTM48N grid
+Step 4: Compute pixel-wise agreement (Intersection/Union)
+Step 5: Generate confusion matrices
+Step 6: Compute IoU time series
+Output: asc_ts.tif + desc_ts.tif + agreement_map.tif + iou_curve.csv
+Duration: 2-3 weeks
+
+SCENARIO 4: REAL-TIME ANOMALY DETECTION
+---
+Input:  baseline_ts (2019-2024) + current_image (2025)
+Step 1: Compute baseline statistics (mean, std)
+Step 2: Load current image → compute water extent
+Step 3: Calculate anomaly score (z-score)
+Step 4: Classify severity (Low/Medium/High/Critical)
+Step 5: Generate automated alert bulletin
+Output: anomaly_map.tif + alert_level_map.tif + alert.json
+Duration: 5-15 minutes per image
+
+====================================================================================================
+LEVEL 4: KEY ALGORITHMS
+====================================================================================================
+
+1. RADIOMETRIC CALIBRATION
+   sigma0 [dB] = 10*log10(DN) + 10*log10(sin_theta) - calibration_const
+
+2. SPECKLE FILTERING
+   - Lee filter (adaptive, preserves edges)
+   - Gamma MAP filter (for GRD products)
+   - NL-means (non-local means, expensive but high-quality)
+
+3. WATER DETECTION
+   - Backscatter thresholding: sigma0_vv < -12 dB → water
+   - Change detection: change_index = (I_wet - I_dry) / I_dry < -0.1
+   - Morphological filtering: remove salt-and-pepper noise
+
+4. KALMAN FILTER
+   - State: [position, velocity, acceleration]
+   - Measurement: observed backscatter
+   - Output: smoothed time series + uncertainty
+
+5. CHANGE POINT DETECTION (CUSUM)
+   - Cumulative Sum Control Chart
+   - Detects shifts in mean + sudden jumps
+   - Per-pixel detection → timestamps of changes
+
+6. ANOMALY DETECTION
+   - Z-score: z = (x - mu) / sigma
+   - Threshold: |z| > 2 or 3 (configurable)
+   - Median Absolute Deviation (robust to outliers)
+
+====================================================================================================
+LEVEL 5: TECHNOLOGIES & LIBRARIES
+====================================================================================================
+
+Language: Python 3.10+
+
+Core Libraries:
+  - NumPy: numerical arrays
+  - SciPy: scientific computing, signal processing
+  - Pandas: data frames, time series
+  - Scikit-learn: ML classifiers, metrics
+
+Geospatial:
+  - Rasterio: read/write GeoTIFF, NetCDF
+  - GDAL: geospatial data translation
+  - GeoPandas: vector data manipulation
+  - Pyproj: coordinate transformations
+
+Remote Sensing:
+  - Google Earth Engine (Python API): data access
+  - SNAP (via subprocess): SAR processing (optional)
+
+Visualization:
+  - Matplotlib: basic plotting
+  - Folium: interactive web maps
+  - Plotly: interactive dashboards
+
+DevOps:
+  - Docker: containerization
+  - GitHub Actions: CI/CD
+  - Jupyter: interactive notebooks
+
+====================================================================================================
+EXECUTION TIMELINE
+====================================================================================================
+
+Week 1: Data Preparation
+  ✓ Input Data Audit (DONE)
+  ✓ Dataset Separation (DONE)
+  ✓ Experiment Scenarios Design (DONE)
+
+Week 2: Scenario 1 (Before-After Analysis)
+  - Implement preprocessing module
+  - Implement water detection
+  - Manual validation with Google Earth
+
+Week 3-4: Scenario 2 (Time Series Analysis)
+  - Batch preprocessing 1300 images
+  - Build time series structures
+  - Implement Kalman + CUSUM
+  - Generate trend maps
+
+Week 5: Scenario 3 (ASC vs DESC Comparison)
+  - Process 1250 DESCENDING images
+  - Co-register outputs
+  - Compute agreement maps
+
+Week 6+: Scenario 4 (Operational System)
+  - Train anomaly detection
+  - Tune thresholds
+  - Deploy automated alerting
+
+====================================================================================================

@@ -1,0 +1,58 @@
+# SAR Preprocessing Configuration
+# Tĩnh Túc Flood Detection Pipeline
+
+preprocessing:
+  # Radiometric Calibration
+  radiometric_calibration:
+    enabled: true
+    calibration_constant: -83.0  # dB, typical for Sentinel-1
+    
+  # Speckle Filtering
+  speckle_filtering:
+    enabled: true
+    algorithm: "lee"  # Options: lee, refined_lee
+    window_size: 3    # Options: 3, 5, 7
+    damping_factor: 0.5  # Range: 0.1-1.0
+    edge_preservation: true
+    
+  # Terrain Correction
+  terrain_correction:
+    enabled: true
+    method: "range_doppler"  # Options: range_doppler, ellipsoid
+    dem_source: "SRTM"  # Options: SRTM, ASTER, local_dem
+    dem_path: null  # Path to local DEM if using local_dem
+    interpolation: "bilinear"  # Options: nearest, bilinear, cubic
+    
+  # AOI Clipping
+  aoi_clipping:
+    enabled: true
+    bbox: [105.87, 22.57, 106.08, 22.78]  # [min_lon, min_lat, max_lon, max_lat] in WGS84
+    crs_target: "EPSG:32648"  # UTM Zone 48N
+    buffer_meters: 500  # Buffer around exact AOI
+    
+  # Output Configuration
+  output:
+    format: "GeoTIFF"  # Options: GeoTIFF, NetCDF
+    compression: "DEFLATE"  # Options: DEFLATE, LZW, NONE
+    datatype: "float32"  # Options: float32, float64, int16
+    output_dir: "data/processed"
+    
+  # Batch Processing
+  batch_processing:
+    enabled: true
+    parallel_jobs: 4
+    chunk_size: 10  # Process 10 images at a time
+    save_intermediate: false
+    
+# Processing parameters
+parameters:
+  # Incidence angle (varies across swath)
+  incidence_angle_min: 30.0  # degrees
+  incidence_angle_max: 46.0  # degrees
+  
+  # Valid backscatter range (dB)
+  backscatter_min: -30.0
+  backscatter_max: 10.0
+  
+  # Nodata value
+  nodata_value: -9999

@@ -1,0 +1,109 @@
+{
+  "scenario_1": {
+    "name": "Scenario 1: Single Time-Point Analysis (Before-After)",
+    "description": "\nPh\u00e2n t\u00edch so s\u00e1nh hai th\u1eddi \u0111i\u1ec3m: tr\u01b0\u1edbc m\u01b0a l\u1edbn v\u00e0 sau m\u01b0a l\u1edbn.\nX\u00e1c \u0111\u1ecbnh v\u00f9ng n\u01b0\u1edbc m\u1edbi xu\u1ea5t hi\u1ec7n ho\u1eb7c m\u1edf r\u1ed9ng.\n\nK\u1ef9 thu\u1eadt:\n  \u2022 Ch\u1ecdn \u1ea3nh tham chi\u1ebfu (reference): tr\u01b0\u1edbc m\u01b0a l\u1edbn (dry season)\n  \u2022 Ch\u1ecdn \u1ea3nh ng\u00e0y hi\u1ec7n t\u1ea1i: sau m\u01b0a (wet season)\n  \u2022 T\u00ednh to\u00e1n: Change Index = (VV_wet - VV_dry) / VV_dry\n  \u2022 Thresholding: Pixels v\u1edbi Change Index < -0.1 \u2192 water pixels\n  \u2022 Morphological filtering: lo\u1ea1i b\u1ecf noise nh\u1ecf l\u1ebb\n\n\u01afu \u0111i\u1ec3m:\n  \u2713 \u0110\u01a1n gi\u1ea3n, nhanh ch\u00f3ng\n  \u2713 Kh\u00f4ng c\u1ea7n chu\u1ed7i d\u00e0i \u1ea3nh\n  \u2713 Ph\u00f9 h\u1ee3p c\u1ea3nh b\u00e1o s\u1edbm (quick alert)\n\nNh\u01b0\u1ee3c \u0111i\u1ec3m:\n  \u2717 Kh\u00f4ng bi\u1ebft \u0111\u01b0\u1ee3c xu h\u01b0\u1edbng thay \u0111\u1ed5i\n  \u2717 D\u1ec5 b\u1ecb \u1ea3nh h\u01b0\u1edfng b\u1edfi noise radar\n  \u2717 Ph\u1ee5 thu\u1ed9c ch\u1ea5t l\u01b0\u1ee3ng \u1ea3nh tham chi\u1ebfu\n\nD\u1eef li\u1ec7u \u0111\u1ea7u v\u00e0o:\n  \u2022 1 \u1ea3nh ASCENDING (reference)\n  \u2022 1 \u1ea3nh ASCENDING (current) \u2192 ho\u1eb7c DESCENDING\n  \u2022 DEM (\u0111\u1ec3 correcting topography)\n\n\u0110\u1ea7u ra:\n  \u2022 Water extent map (binary: water/non-water)\n  \u2022 Change magnitude map\n  \u2022 Accuracy: confusion matrix vs ground truth (n\u1ebfu c\u00f3)\n\nTh\u1eddi gian th\u1ef1c hi\u1ec7n: ~2-3 ng\u00e0y (1 pair processing)\n",
+    "processing_steps": [
+      "1.1 Load reference SAR image (VV, VH polarity)",
+      "1.2 Load current SAR image",
+      "1.3 Radiometric calibration",
+      "1.4 Speckle filtering (Lee filter)",
+      "1.5 Calculate backscatter change index",
+      "1.6 Water detection thresholding",
+      "1.7 Morphological filtering",
+      "1.8 Accuracy assessment"
+    ],
+    "primary_orbit": "ASCENDING",
+    "alternate_orbit": "DESCENDING",
+    "required_ancillary": [
+      "DEM"
+    ],
+    "output_products": [
+      "water_extent_map.tif",
+      "change_magnitude.tif",
+      "accuracy_report.txt"
+    ]
+  },
+  "scenario_2": {
+    "name": "Scenario 2: Time Series Analysis (Continuous Monitoring)",
+    "description": "\nPh\u00e2n t\u00edch chu\u1ed7i th\u1eddi gian: theo d\u00f5i s\u1ef1 thay \u0111\u1ed5i li\u00ean t\u1ee5c m\u1ef1c n\u01b0\u1edbc.\nPh\u00e1t hi\u1ec7n xu h\u01b0\u1edbng t\u00edch n\u01b0\u1edbc, d\u1ef1 b\u00e1o th\u1eddi \u0111i\u1ec3m nguy hi\u1ec3m.\n\nK\u1ef9 thu\u1eadt:\n  \u2022 X\u1eed l\u00fd t\u1ea5t c\u1ea3 \u1ea3nh trong chu k\u1ef3 (VV time series)\n  \u2022 T\u00ednh to\u00e1n time series backscatter \u03c3\u2080(t)\n  \u2022 L\u1ecdc Kalman ho\u1eb7c median filter \u0111\u1ec3 lo\u1ea1i b\u1ecf speckle\n  \u2022 Detect change points b\u1eb1ng CUSUM ho\u1eb7c Bayesian change point\n  \u2022 Classify pixels: stable / increasing-water / fluctuating\n  \u2022 Compute water extent time series\n\n\u01afu \u0111i\u1ec3m:\n  \u2713 Ph\u00e1t hi\u1ec7n xu h\u01b0\u1edbng d\u00e0i h\u1ea1n\n  \u2713 Robust against single-image noise\n  \u2713 Early warning capability (detect ramp-up)\n  \u2713 Estimate accumulation rate\n\nNh\u01b0\u1ee3c \u0111i\u1ec3m:\n  \u2717 C\u1ea7n d\u1eef li\u1ec7u d\u00e0i h\u1ea1n (~1-2 n\u0103m)\n  \u2717 X\u1eed l\u00fd ph\u1ee9c t\u1ea1p, t\u1ed1n t\u00e0i nguy\u00ean\n  \u2717 Y\u00eau c\u1ea7u l\u1eadp m\u00f4 h\u00ecnh temporal correlations\n\nD\u1eef li\u1ec7u \u0111\u1ea7u v\u00e0o:\n  \u2022 Chu\u1ed7i \u1ea3nh ASCENDING (24 th\u00e1ng): ~600 \u1ea3nh\n  \u2022 DEM, reference water mask\n  \u2022 Auxiliary: rainfall data (ERA5 qua GEE)\n\n\u0110\u1ea7u ra:\n  \u2022 Time series water extent: [N_pixels, T_months]\n  \u2022 Change point detection map\n  \u2022 Trend analysis: slope m(x,y) in mm/year\n  \u2022 Time-varying water volume curve\n  \u2022 Alert/alarm levels\n\nTh\u1eddi gian th\u1ef1c hi\u1ec7n: ~1-2 tu\u1ea7n (full processing + analysis)\n",
+    "processing_steps": [
+      "2.1 Load full Sentinel-1 time series (ASCENDING)",
+      "2.2 Multi-temporal preprocessing",
+      "2.3 Create backscatter time series \u03c3\u2080(t, x, y)",
+      "2.4 Temporal filtering (Kalman + spatial coherence)",
+      "2.5 Change point detection (CUSUM)",
+      "2.6 Per-pixel water classification",
+      "2.7 Water extent time series generation",
+      "2.8 Trend analysis & forecasting",
+      "2.9 Comparison with rainfall data"
+    ],
+    "primary_orbit": "ASCENDING",
+    "alternate_orbit": "DESCENDING (for cross-validation)",
+    "required_ancillary": [
+      "DEM",
+      "Rainfall_ERA5"
+    ],
+    "output_products": [
+      "backscatter_timeseries.npy",
+      "water_extent_timeseries.tif",
+      "change_points.json",
+      "trend_map.tif",
+      "forecast_warning.txt"
+    ]
+  },
+  "scenario_3": {
+    "name": "Scenario 3: Ascending vs Descending Comparison",
+    "description": "\nX\u1eed l\u00fd ri\u00eang bi\u1ec7t ASCENDING v\u00e0 DESCENDING, so s\u00e1nh k\u1ebft qu\u1ea3.\nKi\u1ec3m tra \u0111\u1ed9 \u1ed5n \u0111\u1ecbnh ph\u01b0\u01a1ng ph\u00e1p v\u1edbi c\u00e1c viewing angles kh\u00e1c nhau.\n\nK\u1ef9 thu\u1eadt:\n  \u2022 Process ASCENDING: generate water extent maps \u2192 WM_asc(t)\n  \u2022 Process DESCENDING: generate water extent maps \u2192 WM_desc(t)\n  \u2022 Reproject c\u1ea3 2 l\u00ean UTM grid chung\n  \u2022 Calculate agreement map: agreement_ratio(x,y) = Intersection / Union\n  \u2022 Generate confusion matrix (co-registration errors)\n  \u2022 Compute IOU (Intersection over Union) time series\n\n\u01afu \u0111i\u1ec3m:\n  \u2713 Validates consistency across viewing geometries\n  \u2713 Identifies viewing-angle artifacts\n  \u2713 Robustness assessment\n  \u2713 Enables 3D motion retrieval (if combined)\n\nNh\u01b0\u1ee3c \u0111i\u1ec3m:\n  \u2717 Double the processing load\n  \u2717 Co-registration challenges\n  \u2717 Different spatial resolutions (near range vs far range)\n\nD\u1eef li\u1ec7u \u0111\u1ea7u v\u00e0o:\n  \u2022 ASCENDING subset: 1300 \u1ea3nh (24 months)\n  \u2022 DESCENDING subset: 1250 \u1ea3nh (24 months)\n  \u2022 DEM (UTM reprojected)\n\n\u0110\u1ea7u ra:\n  \u2022 Water maps ASCENDING: [T_months, H, W]\n  \u2022 Water maps DESCENDING: [T_months, H, W]\n  \u2022 Agreement map: [H, W] (%)\n  \u2022 Co-registration analysis report\n  \u2022 IOU time series curve\n  \u2022 Geometry sensitivity analysis\n\nTh\u1eddi gian th\u1ef1c hi\u1ec7n: ~2-3 tu\u1ea7n (dual-track processing)\n",
+    "processing_steps": [
+      "3.1 Process ASCENDING subset independently",
+      "3.2 Generate ASCENDING water time series",
+      "3.3 Process DESCENDING subset independently",
+      "3.4 Generate DESCENDING water time series",
+      "3.5 Co-registration: both \u2192 UTM48N grid",
+      "3.6 Compute pixel-wise agreement ratio",
+      "3.7 Generate confusion matrix at each time step",
+      "3.8 IOU time series: compute intersection/union",
+      "3.9 Sensitivity analysis: identify viewing-angle effects"
+    ],
+    "primary_orbit": "ASCENDING",
+    "secondary_orbit": "DESCENDING",
+    "required_ancillary": [
+      "DEM"
+    ],
+    "output_products": [
+      "asc_water_timeseries.tif",
+      "desc_water_timeseries.tif",
+      "agreement_map.tif",
+      "iou_timeseries.csv",
+      "geometry_comparison_report.txt"
+    ]
+  },
+  "scenario_4": {
+    "name": "Scenario 4: Anomaly Detection & Real-Time Alert",
+    "description": "\nPh\u00e1t hi\u1ec7n nh\u1eefng bi\u1ebfn \u0111\u1ed9ng b\u1ea5t th\u01b0\u1eddng trong chu\u1ed7i th\u1eddi gian.\nX\u00e1c \u0111\u1ecbnh c\u00e1c th\u1eddi \u0111i\u1ec3m c\u00f3 nguy c\u01a1 l\u0169 qu\u00e9t cao.\n\nK\u1ef9 thu\u1eadt:\n  \u2022 Hu\u1ea5n luy\u1ec7n baseline model tr\u00ean pre-flood period (reference state)\n  \u2022 Monitor deviation t\u1eeb baseline: \u0394(t) = |Water(t) - Baseline|\n  \u2022 Define anomaly thresholds: \u03bc + 2\u03c3, \u03bc + 3\u03c3\n  \u2022 Trigger alerts khi anomaly v\u01b0\u1ee3t threshold\n  \u2022 Estimate flood severity level: Low / Medium / High / Critical\n  \u2022 Generate automated early warning bulletin\n\n\u01afu \u0111i\u1ec3m:\n  \u2713 Real-time capability (once per acquisition)\n  \u2713 Automatic alert generation\n  \u2713 Severity classification\n  \u2713 Integration with operational systems\n\nNh\u01b0\u1ee3c \u0111i\u1ec3m:\n  \u2717 Requires good baseline characterization\n  \u2717 Tuning thresholds difficult (false positive/negative tradeoff)\n  \u2717 May miss slow-onset flood\n\nD\u1eef li\u1ec7u \u0111\u1ea7u v\u00e0o:\n  \u2022 Historical water extent (2019-2024): baseline\n  \u2022 Current & recent acquisitions (2025): monitoring\n  \u2022 Rainfall forecast (optional)\n  \u2022 Threshold parameters (tunable)\n\n\u0110\u1ea7u ra:\n  \u2022 Anomaly score map: [H, W]\n  \u2022 Alert level raster (severity classification)\n  \u2022 Early warning bulletin (JSON)\n  \u2022 Performance metrics (sensitivity, specificity)\n  \u2022 Threshold tuning recommendations\n\nTh\u1eddi gian th\u1ef1c hi\u1ec7n: ~3-5 ng\u00e0y (training) + real-time processing (minutes/image)\n",
+    "processing_steps": [
+      "4.1 Load historical water extent time series (2019-2024)",
+      "4.2 Compute per-pixel statistics: mean, std, min, max",
+      "4.3 Define baseline envelope & thresholds",
+      "4.4 Load current & recent acquisitions",
+      "4.5 Compute per-pixel anomaly score: z-score or MAD",
+      "4.6 Apply severity thresholds \u2192 alert levels",
+      "4.7 Classify spatial clusters (connected components)",
+      "4.8 Generate early warning bulletin",
+      "4.9 Evaluate against historical events (if ground truth available)"
+    ],
+    "primary_orbit": "ASCENDING",
+    "alternate_orbit": "DESCENDING (real-time fusion)",
+    "required_ancillary": [
+      "DEM",
+      "Rainfall_forecast"
+    ],
+    "output_products": [
+      "anomaly_score_map.tif",
+      "alert_level_map.tif",
+      "alert_bulletin.json",
+      "performance_metrics.txt",
+      "threshold_tuning_report.txt"
+    ]
+  }
+}

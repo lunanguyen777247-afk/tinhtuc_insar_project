@@ -1,0 +1,26 @@
+=================================================================
+  BÁO CÁO KẾT QUẢ DỰ ÁN InSAR — TĨNH TÚC, CAO BẰNG
+=================================================================
+  Ngày tạo báo cáo: 2026-03-14 22:36:42
+
+  [GIAI ĐOẠN 2] P-SBAS + PHÂN LOẠI MAC
+  Tổng số MACs phát hiện: 2
+    potential_landslide           :   2 (100.0%)
+  MACs nguy cơ cao (risk≥6): 0
+
+  [GIAI ĐOẠN 3] GIÁM SÁT 4D HÀNG NGÀY
+    P1 (Sườn dốc khu khai thác thiếc phía Đ): E_max=0.7mm, V_max=18.8mm
+    P2 (Talus slope có dấu hiệu trượt      ): E_max=5.5mm, V_max=1.9mm
+    P3 (Khu dân cư cạnh mỏ kẽm             ): E_max=0.5mm, V_max=13.2mm
+
+  [GIAI ĐOẠN 4] KINEMATICS
+  Cảnh báo gia tốc: 0 sự kiện
+
+  [OUTPUT FILES]
+  outputs/figures/velocity_asc.png
+  outputs/figures/mac_classification.png
+  outputs/figures/timeseries_4d.png
+  outputs/figures/strain_invariants.png
+  outputs/maps/mac_database.csv
+  outputs/maps/thickness.npy
+=================================================================

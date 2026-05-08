@@ -1,0 +1,32 @@
+
+APS CORRECTION REPORT
+============================================================
+Date: 2026-04-06T23:35:03.763424
+Method: ERA5
+Study Region: Tĩnh Túc, Cao Bằng
+Grid Size: 95 x 95 pixels
+Time Points: 60
+
+VARIANCE REDUCTION (mm²)
+  Before: 54.48
+  After:  55.14
+  Reduction: -1.2%
+
+ATMOSPHERIC PHASE SCREEN (mm)
+  Mean: 0.00
+  Std:  0.00
+  Range: [-0.00, 0.00]
+
+COHERENCE STATISTICS
+  Mean: 0.614
+  Range: [0.500, 0.900]
+
+INTERPRETATION
+  - Variance reduction > 10%: APS correction effective
+  - APS std < 5mm: Strong atmospheric signal detected
+  - Next step: Feed to P-SBAS with Adaptive Kalman filtering
+
+FILES SAVED
+  ✓ displacement_aps_corrected.npy
+  ✓ aps_phase_screens.npy
+  ✓ coherence_map.npy

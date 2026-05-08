@@ -1,0 +1,53 @@
+common:
+  roi:
+    bbox: [105.85, 22.55, 106.1, 22.8]
+    polygon:
+      - [105.87, 22.57]
+      - [106.08, 22.57]
+      - [106.08, 22.78]
+      - [105.87, 22.78]
+      - [105.87, 22.57]
+    mineCenter: [105.975, 22.675]
+  export:
+    crs: 'EPSG:32648'
+    maxPixels: 10000000000
+    fileFormat: 'GeoTIFF'
+    folder: 'InSAR_TinhTuc'
+  map:
+    centerLon: 105.975
+    centerLat: 22.675
+    zoom: 12
+  dates:
+    fullStart: '2017-01-01'
+    fullEnd: '2025-12-31'
+    preStart: '2017-01-01'
+    preEnd: '2019-12-31'
+    postStart: '2020-01-01'
+    postEnd: '2025-12-31'
+    s2Start: '2025-01-01'
+    s2End: '2025-12-31'
+  slope:
+    classBreaks: [10, 20, 35, 45]
+    highRiskMin: 30
+  mining:
+    bsiMin: 0.1
+    ndviMax: 0.2
+    vvMin: -12
+  s2:
+    maxCloudPct: 20
+  hotspot:
+    percentile: 90
+    scale: 100
+script01:
+  dates:
+    fullStart: '2017-01-01'
+script03:
+  dates:
+    s2PreStart: '2023-01-01'
+    s2PreEnd: '2023-03-31'
+    s2PostStart: '2023-10-01'
+    s2PostEnd: '2023-12-31'
+    s1PreStart: '2023-01-01'
+    s1PreEnd: '2023-03-31'
+    s1PostStart: '2023-10-01'
+    s1PostEnd: '2023-12-31'

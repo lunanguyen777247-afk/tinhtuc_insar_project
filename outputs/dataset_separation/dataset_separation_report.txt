@@ -1,0 +1,79 @@
+==========================================================================================
+DATASET SEPARATION REPORT — ASCENDING vs DESCENDING Analysis
+==========================================================================================
+Generated: 2026-04-24 20:37:04
+
+──────────────────────────────────────────────────────────────────────────────────────────
+1. DATASET OVERVIEW
+──────────────────────────────────────────────────────────────────────────────────────────
+  Total Images: 2,557
+  ASCENDING: 1,304 (51.0%)
+  DESCENDING: 1,253 (49.0%)
+  Balance Ratio: 1.04
+  Status: ✓ Balanced
+
+──────────────────────────────────────────────────────────────────────────────────────────
+2. ASCENDING SUBSET (Track ~131-132)
+──────────────────────────────────────────────────────────────────────────────────────────
+  Date Range: 2019-01-01 → 2025-12-31 (2556 days)
+  Images: 1304
+  Frequency: avg 2.0 days, max gap 2 days
+  Relative Orbits: [24, 25, 26] (3 tracks)
+  LOS Direction: NE→SW (ascending)
+  Sensitivity:
+    • Water detection: Good (specular reflection)
+    • Subsidence: Excellent (vertical + EW component)
+
+──────────────────────────────────────────────────────────────────────────────────────────
+3. DESCENDING SUBSET (Track ~24-26)
+──────────────────────────────────────────────────────────────────────────────────────────
+  Date Range: 2019-01-02 → 2025-12-30 (2554 days)
+  Images: 1253
+  Frequency: avg 2.0 days, max gap 3 days
+  Relative Orbits: [131, 132] (2 tracks)
+  LOS Direction: SW→NE (descending)
+  Sensitivity:
+    • Water detection: Good (specular reflection)
+    • Subsidence: Excellent (vertical + EW component)
+
+──────────────────────────────────────────────────────────────────────────────────────────
+4. GEOMETRY COMPARISON
+──────────────────────────────────────────────────────────────────────────────────────────
+  For Flood Detection Problem:
+  • ASCENDING: Looks from SW to NE; detects horizontal E-W + vertical displacements
+  • DESCENDING: Looks from NE to SW; detects horizontal W-E + vertical displacements
+  → Using both enables 3D surface motion retrieval
+
+  For Water Surface Monitoring:
+  • Specular reflection (calm water) is strong in both ASC and DESC
+  • ASC and DESC provide different viewing angles → robust flood detection
+  • Combined ASC+DESC improves accuracy by removing viewing-angle artifacts
+
+──────────────────────────────────────────────────────────────────────────────────────────
+5. RECOMMENDATIONS FOR FLOOD DETECTION
+──────────────────────────────────────────────────────────────────────────────────────────
+  Strategy 1: Single-Track Analysis
+    → Use ASCENDING only: faster processing, sufficient for vertical subsidence + E-W deformation
+    → OR use DESCENDING only: similar capability with W-E sensitivity
+    ✓ Suitable for: Real-time flood monitoring, quick detection
+
+  Strategy 2: Dual-Track Fusion (RECOMMENDED)
+    → Process both ASC and DESC separately, then fuse results
+    → Retrieve 3D surface motion + water extent changes
+    ✓ Suitable for: Comprehensive flood risk assessment, robust detection
+
+  Strategy 3: Relative Change Detection (Fast)
+    → Compare current image vs reference (pre-flood) → easy water detection
+    ✓ Works on both ASC and DESC
+
+──────────────────────────────────────────────────────────────────────────────────────────
+6. DATASET QUALITY VERDICT
+──────────────────────────────────────────────────────────────────────────────────────────
+  ✓ Sufficient temporal coverage for time-series analysis
+  ✓ Balanced ASCENDING/DESCENDING split for 3D retrieval
+  ✓ Revisit frequency (~2 days) adequate for monthly monitoring
+  ✓ Multiple relative orbits provide robust sampling
+
+  PROCEED WITH: Dual-track processing (ASC + DESC)
+  EXPECTED PERFORMANCE: High confidence water/subsidence detection
+==========================================================================================

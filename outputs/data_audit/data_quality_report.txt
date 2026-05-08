@@ -1,0 +1,54 @@
+================================================================================
+INPUT DATA AUDIT REPORT — Sentinel-1 SAR Data Quality Assessment
+================================================================================
+Generated: 2026-04-24 20:29:32
+Study Area: BBOX [105.87, 22.57, 106.08, 22.78]
+Date Range: 2019-01-01 to 2025-12-31
+
+────────────────────────────────────────────────────────────────────────────────
+1. DATA SUMMARY
+────────────────────────────────────────────────────────────────────────────────
+  Total Images: 2,557
+  ASCENDING: 1,304 (51.0%)
+  DESCENDING: 1,253 (49.0%)
+  Date Range: 2019-01-01 to 2025-12-31
+  Average Frequency: 1.0 days/image
+
+────────────────────────────────────────────────────────────────────────────────
+2. ORBITAL CHARACTERISTICS
+────────────────────────────────────────────────────────────────────────────────
+  ASCENDING Frequency: 1.96 days/image
+  DESCENDING Frequency: 2.04 days/image
+  Relative Orbits: [24, 25, 26, 131, 132]
+  Sensor Modes: ['IW']
+
+────────────────────────────────────────────────────────────────────────────────
+3. DATA GAPS ANALYSIS
+────────────────────────────────────────────────────────────────────────────────
+  Number of Gaps (>1 day): 0
+  No significant gaps detected.
+
+────────────────────────────────────────────────────────────────────────────────
+4. QUALITY ASSESSMENT
+────────────────────────────────────────────────────────────────────────────────
+  Polarization Coverage: ['VV', 'VH']
+  Product Type: GRD (Ground Range Detected)
+  Coverage Uniformity: ⚠ Imbalanced
+
+────────────────────────────────────────────────────────────────────────────────
+5. DATASET SPLIT RECOMMENDATION
+────────────────────────────────────────────────────────────────────────────────
+  Split A (ASCENDING): 1304 images
+    - Suitable for: Vertical & East-West deformation monitoring
+    - Frequency: 1.96 days
+  Split B (DESCENDING): 1253 images
+    - Suitable for: Vertical & West-East deformation monitoring
+    - Frequency: 2.04 days
+
+────────────────────────────────────────────────────────────────────────────────
+6. RECOMMENDATIONS
+────────────────────────────────────────────────────────────────────────────────
+  ✓ Dataset is suitable for InSAR time series analysis
+  ✓ Balanced ASCENDING/DESCENDING coverage enables 3D deformation retrieval
+  ✓ 12-day revisit frequency is sufficient for long-term monitoring
+================================================================================

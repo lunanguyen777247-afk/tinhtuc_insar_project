@@ -1,0 +1,254 @@
+# config/model_hyperparams.yaml
+# ==========================
+# Centralized hyperparameter configuration for InSAR pipeline components
+# Updated for improved accuracy (target 92%)
+
+# ============================================================================
+# 1. ATMOSPHERIC CORRECTION (APS REMOVAL)
+# ============================================================================
+atmospheric_correction:
+  method: "era5"  # "era5" or "gacos"
+  
+  # ERA5-specific
+  era5:
+    use_gacos: false           # Fallback to GACOS if ERA5 unavailable
+    zwd_conversion: -5.16e-7   # rad/mm for C-band
+    smoothing_sigma: 2.0       # Spatial smoothing (km)
+    
+  # GACOS-specific
+  gacos:
+    resolution: 2.0            # km (higher than ERA5)
+    ztd_to_phase: -2.3e-6     # rad/mm
+    refinement_iterations: 3
+    
+  # General parameters
+  dem_ref_height: 500.0        # Reference height (m)
+  coherence_threshold: 0.4     # Min coherence for valid correction
+  iterative_refinement: 3      # Number of refinement iterations
+  
+  # Quality control
+  max_aps_magnitude: 100.0     # Max APS (mm) - sanity check
+  apply_high_pass_filter: true # Remove long-wavelength DEM correlations
+
+
+# ============================================================================
+# 2. ADAPTIVE KALMAN FILTER (SPF + COHERENCE TUNING)
+# ============================================================================
+adaptive_kalman:
+  # Measurement noise (InSAR observation uncertainty)
+  measurement_noise:
+    base_mm: 2.0               # Baseline measurement noise (mm)
+    high_coherence_threshold: 0.7
+    low_coherence_threshold: 0.4
+    adaptivity_factor: 1.5     # How much noise varies with coherence
+  
+  # Process noise (deformation model uncertainty)
+  process_noise:
+    displacement_mm: 0.5       # mm/day variance
+    velocity_mm_per_day2: 0.01 # mm/day² variance
+    acceleration: 0.001        # mm/day³ variance
+  
+  # Spatial smoothing (Gauss-Markov correlation)
+  spatial:
+    correlation_length: 500.0  # m
+    smoothing_sigma: 3.0       # pixels
+    use_spf: true              # Surface-Parallel Flow constraint
+    spf_smoothing_km: 1.0      # SPF smoothing length (km)
+  
+  # State vector memory
+  history_steps: 5             # Number of past steps to keep
+  polynomial_order: 2          # Temporal interpolation order
+  
+  # Outlier handling
+  huber_delta: 10.0            # Huber loss threshold (mm)
+  use_robust_estimation: true
+
+
+# ============================================================================
+# 3. PYTORCH TRANSFORMER (DEEP LEARNING FUSION)
+# ============================================================================
+transformer:
+  # Architecture
+  architecture:
+    sequence_length: 90        # Input window (days)
+    n_features: 5              # [d_kalman, P, SM, GWL, T]
+    embedding_dim: 32          # d_model
+    n_heads: 4                 # Multi-head attention
+    n_layers: 2                # Encoder layers
+    feedforward_dim: 64        # d_ff
+    dropout: 0.1
+  
+  # Training hyperparameters
+  training:
+    batch_size: 32
+    learning_rate: 1.0e-3
+    weight_decay: 1.0e-4
+    n_epochs: 100
+    early_stopping_patience: 10
+    gradient_clip_norm: 1.0
+    
+  # Data split
+  data_split:
+    train_ratio: 0.7
+    val_ratio: 0.15
+    test_ratio: 0.15
+    shuffle: true
+  
+  # Regularization
+  regularization:
+    use_dropout: true
+    use_batch_norm: false      # Usually not needed for transformers
+    use_weight_decay: true
+  
+  # Device
+  device: "cuda"               # "cuda" or "cpu"
+  mixed_precision: false       # Use FP16 (experimental)
+  
+  # Output
+  prediction_mode: "residual"  # "residual" or "absolute"
+                               # "residual" = Δd_hydro (correction term)
+                               # "absolute" = full displacement
+
+
+# ============================================================================
+# 4. SPATIAL CLUSTERING (MAC DETECTION)
+# ============================================================================
+clustering:
+  velocity_threshold_mm_per_year: 2.0  # Min velocity for active pixels
+  buffer_radius_pixels: 2              # Morphological dilation
+  min_cluster_size_pixels: 50          # Minimum cluster area
+  pixel_size_meters: 30.0              # Sentinel-1 resolution
+  
+  # DBSCAN parameters
+  dbscan:
+    eps: 0.5
+    min_samples: 10
+    metric: "euclidean"
+  
+  # Feature extraction
+  features:
+    extract_mean_velocity: true
+    extract_velocity_std: true
+    extract_acceleration: true
+    extract_wavelet_coherence: true
+    extract_thickness: true
+    extract_slope_dependence: true
+
+
+# ============================================================================
+# 5. MAC CLASSIFICATION (ML-BASED TYPE ASSIGNMENT)
+# ============================================================================
+classification:
+  classifier_type: "random_forest"  # "random_forest", "svm", "ensemble"
+  
+  # Random Forest
+  random_forest:
+    n_estimators: 100
+    max_depth: 15
+    min_samples_split: 5
+    min_samples_leaf: 2
+    max_features: "sqrt"
+  
+  # SVM (as secondary classifier)
+  svm:
+    kernel: "rbf"
+    C: 1.0
+    gamma: "scale"
+  
+  # Class weighting (important: dataset is imbalanced)
+  class_weights: "balanced"
+  
+  # Thresholds for MAC type assignment
+  thresholds:
+    slope_subsidence: 10.0     # degrees
+    kvh_ratio: 0.5             # height/width ratio for subsidence vs landslide
+    coherence_for_classification: 0.5
+
+
+# ============================================================================
+# 6. KINEMATICS ANALYSIS (STRAIN & THICKNESS)
+# ============================================================================
+kinematics:
+  # Strain tensor computation
+  strain:
+    window_size: 5             # pixels (gradient filter window)
+    normalize_by_dem: false    # Account for topography
+  
+  # Thickness estimation
+  thickness:
+    use_geometry_factor: true
+    assumed_slip_angle: 30.0   # degrees (for subsidence)
+    c_geometric_factor: 1.5    # Empirical correction factor
+  
+  # Wavelet Transform Coherence (hydro-deformation coupling)
+  wtc:
+    wavelet: "morlet"
+    scales: [8, 16, 32, 64, 128]  # Morlet scales (days)
+    coherence_threshold: 0.7
+  
+  # Acceleration event detection
+  acceleration:
+    threshold_mm_per_day2: 0.01
+    window_days: 30
+    post_processing_smooth: 3   # Smoothing (days) to remove noise
+
+
+# ============================================================================
+# 7. VALIDATION & ACCURACY METRICS
+# ============================================================================
+validation:
+  # GPS/Leveling comparison
+  gps_comparison:
+    enabled: true
+    max_distance_km: 1.0       # Max distance to nearest GPS point
+    time_interpolation: "linear"
+  
+  # Cross-validation
+  cross_validation:
+    n_folds: 5                 # K-fold CV
+    loocv: false               # Leave-One-Out CV (expensive)
+    spatial_stratification: true
+  
+  # Target metrics
+  target_accuracy_percent: 92.0
+  target_rmse_mm: 8.0
+  target_r2: 0.65
+  
+  # Output
+  save_confusion_matrix: true
+  save_per_point_metrics: true
+
+
+# ============================================================================
+# 8. OUTPUT & REPORTING
+# ============================================================================
+output:
+  figures:
+    save_velocity_map: true
+    save_timeseries_comparison: true
+    save_strain_map: true
+    save_thickness_map: true
+    save_confidence_map: true
+    dpi: 300
+    format: "png"
+  
+  data_export:
+    export_csv: true
+    export_geotiff: true
+    export_hdf5: true
+  
+  report:
+    generate_latex: true
+    include_uncertainty_bounds: true
+    include_comparison_with_literature: true
+
+
+# ============================================================================
+# 9. COMPUTATION RESOURCES
+# ============================================================================
+computation:
+  n_workers: 4                 # Parallel processing threads
+  gpu_enabled: true
+  cuda_device: 0               # GPU device ID
+  memory_limit_gb: 16.0        # Max GPU memory
+  chunk_size_mb: 512           # For out-of-core processing

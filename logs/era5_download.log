@@ -1,0 +1,405 @@
+2026-04-06 23:31:59,478 [INFO] ======================================================================
+2026-04-06 23:31:59,479 [INFO] PHASE 1: APS CORRECTION (Method: ERA5)
+2026-04-06 23:31:59,479 [INFO] ======================================================================
+2026-04-06 23:31:59,480 [INFO] Loading InSAR data...
+2026-04-06 23:31:59,493 [INFO]   Displacement: (60, 95, 95), range=[-84.8, 78.4] mm
+2026-04-06 23:31:59,494 [INFO]   DEM: (95, 95), range=[216.5, 1794.0] m
+2026-04-06 23:31:59,495 [INFO]   Time points: 60, days range=[0, 1796]
+2026-04-06 23:31:59,496 [INFO] Creating coherence map...
+2026-04-06 23:31:59,498 [INFO]   Coherence: range=[0.50, 0.90]
+2026-04-06 23:31:59,498 [INFO] Preparing ZWD data (method=era5)...
+2026-04-06 23:31:59,499 [WARNING] File not found: era5_zwd_2020-01-01.npy
+2026-04-06 23:31:59,500 [WARNING] File not found: era5_zwd_2020-02-01.npy
+2026-04-06 23:31:59,500 [WARNING] File not found: era5_zwd_2020-03-01.npy
+2026-04-06 23:31:59,501 [WARNING] File not found: era5_zwd_2020-04-01.npy
+2026-04-06 23:31:59,501 [WARNING] File not found: era5_zwd_2020-05-01.npy
+2026-04-06 23:31:59,501 [WARNING] File not found: era5_zwd_2020-06-01.npy
+2026-04-06 23:31:59,502 [WARNING] File not found: era5_zwd_2020-07-01.npy
+2026-04-06 23:31:59,502 [WARNING] File not found: era5_zwd_2020-08-01.npy
+2026-04-06 23:31:59,502 [WARNING] File not found: era5_zwd_2020-09-01.npy
+2026-04-06 23:31:59,503 [WARNING] File not found: era5_zwd_2020-10-01.npy
+2026-04-06 23:31:59,503 [WARNING] File not found: era5_zwd_2020-11-01.npy
+2026-04-06 23:31:59,503 [WARNING] File not found: era5_zwd_2020-12-01.npy
+2026-04-06 23:31:59,504 [WARNING] File not found: era5_zwd_2021-01-01.npy
+2026-04-06 23:31:59,504 [WARNING] File not found: era5_zwd_2021-02-01.npy
+2026-04-06 23:31:59,505 [WARNING] File not found: era5_zwd_2021-03-01.npy
+2026-04-06 23:31:59,505 [WARNING] File not found: era5_zwd_2021-04-01.npy
+2026-04-06 23:31:59,506 [WARNING] File not found: era5_zwd_2021-05-01.npy
+2026-04-06 23:31:59,506 [WARNING] File not found: era5_zwd_2021-06-01.npy
+2026-04-06 23:31:59,507 [WARNING] File not found: era5_zwd_2021-07-01.npy
+2026-04-06 23:31:59,507 [WARNING] File not found: era5_zwd_2021-08-01.npy
+2026-04-06 23:31:59,507 [WARNING] File not found: era5_zwd_2021-09-01.npy
+2026-04-06 23:31:59,508 [WARNING] File not found: era5_zwd_2021-10-01.npy
+2026-04-06 23:31:59,508 [WARNING] File not found: era5_zwd_2021-11-01.npy
+2026-04-06 23:31:59,509 [WARNING] File not found: era5_zwd_2021-12-01.npy
+2026-04-06 23:31:59,509 [WARNING] File not found: era5_zwd_2022-01-01.npy
+2026-04-06 23:31:59,510 [WARNING] File not found: era5_zwd_2022-02-01.npy
+2026-04-06 23:31:59,511 [WARNING] File not found: era5_zwd_2022-03-01.npy
+2026-04-06 23:31:59,511 [WARNING] File not found: era5_zwd_2022-04-01.npy
+2026-04-06 23:31:59,512 [WARNING] File not found: era5_zwd_2022-05-01.npy
+2026-04-06 23:31:59,512 [WARNING] File not found: era5_zwd_2022-06-01.npy
+2026-04-06 23:31:59,513 [WARNING] File not found: era5_zwd_2022-07-01.npy
+2026-04-06 23:31:59,513 [WARNING] File not found: era5_zwd_2022-08-01.npy
+2026-04-06 23:31:59,514 [WARNING] File not found: era5_zwd_2022-09-01.npy
+2026-04-06 23:31:59,514 [WARNING] File not found: era5_zwd_2022-10-01.npy
+2026-04-06 23:31:59,514 [WARNING] File not found: era5_zwd_2022-11-01.npy
+2026-04-06 23:31:59,515 [WARNING] File not found: era5_zwd_2022-12-01.npy
+2026-04-06 23:31:59,516 [WARNING] File not found: era5_zwd_2023-01-01.npy
+2026-04-06 23:31:59,517 [WARNING] File not found: era5_zwd_2023-02-01.npy
+2026-04-06 23:31:59,517 [WARNING] File not found: era5_zwd_2023-03-01.npy
+2026-04-06 23:31:59,518 [WARNING] File not found: era5_zwd_2023-04-01.npy
+2026-04-06 23:31:59,518 [WARNING] File not found: era5_zwd_2023-05-01.npy
+2026-04-06 23:31:59,519 [WARNING] File not found: era5_zwd_2023-06-01.npy
+2026-04-06 23:31:59,519 [WARNING] File not found: era5_zwd_2023-07-01.npy
+2026-04-06 23:31:59,520 [WARNING] File not found: era5_zwd_2023-08-01.npy
+2026-04-06 23:31:59,521 [WARNING] File not found: era5_zwd_2023-09-01.npy
+2026-04-06 23:31:59,522 [WARNING] File not found: era5_zwd_2023-10-01.npy
+2026-04-06 23:31:59,522 [WARNING] File not found: era5_zwd_2023-11-01.npy
+2026-04-06 23:31:59,523 [WARNING] File not found: era5_zwd_2023-12-01.npy
+2026-04-06 23:31:59,524 [WARNING] File not found: era5_zwd_2024-01-01.npy
+2026-04-06 23:31:59,524 [WARNING] File not found: era5_zwd_2024-02-01.npy
+2026-04-06 23:31:59,525 [WARNING] File not found: era5_zwd_2024-03-01.npy
+2026-04-06 23:31:59,526 [WARNING] File not found: era5_zwd_2024-04-01.npy
+2026-04-06 23:31:59,526 [WARNING] File not found: era5_zwd_2024-05-01.npy
+2026-04-06 23:31:59,527 [WARNING] File not found: era5_zwd_2024-06-01.npy
+2026-04-06 23:31:59,527 [WARNING] File not found: era5_zwd_2024-07-01.npy
+2026-04-06 23:31:59,528 [WARNING] File not found: era5_zwd_2024-08-01.npy
+2026-04-06 23:31:59,528 [WARNING] File not found: era5_zwd_2024-09-01.npy
+2026-04-06 23:31:59,528 [WARNING] File not found: era5_zwd_2024-10-01.npy
+2026-04-06 23:31:59,529 [WARNING] File not found: era5_zwd_2024-11-01.npy
+2026-04-06 23:31:59,529 [WARNING] File not found: era5_zwd_2024-12-01.npy
+2026-04-06 23:31:59,529 [INFO] Loaded 0/60 cached ZWD files
+2026-04-06 23:31:59,530 [INFO]   Only 0/60 ZWD files in cache
+2026-04-06 23:31:59,530 [INFO]   Generating synthetic ZWD data...
+2026-04-06 23:31:59,532 [INFO] Generating synthetic ZWD for 60 dates
+2026-04-06 23:31:59,549 [INFO] ✓ Generated synthetic ZWD: range=[18.8, 68.1] mm
+2026-04-06 23:31:59,626 [INFO] ✓ Saved 60 ZWD files to D:\tinhtuc_insar_project\data\era5_aps
+2026-04-06 23:31:59,626 [INFO]   ZWD ready: 60 dates
+2026-04-06 23:35:03,552 [INFO] ======================================================================
+2026-04-06 23:35:03,552 [INFO] PHASE 1: APS CORRECTION (Method: ERA5)
+2026-04-06 23:35:03,552 [INFO] ======================================================================
+2026-04-06 23:35:03,553 [INFO] Loading InSAR data...
+2026-04-06 23:35:03,555 [INFO]   Displacement: (60, 95, 95), range=[-84.8, 78.4] mm
+2026-04-06 23:35:03,556 [INFO]   DEM: (95, 95), range=[216.5, 1794.0] m
+2026-04-06 23:35:03,556 [INFO]   Time points: 60, days range=[0, 1796]
+2026-04-06 23:35:03,556 [INFO] Creating coherence map...
+2026-04-06 23:35:03,557 [INFO]   Coherence: range=[0.50, 0.90]
+2026-04-06 23:35:03,557 [INFO] Preparing ZWD data (method=era5)...
+2026-04-06 23:35:03,570 [INFO] Loaded 60/60 cached ZWD files
+2026-04-06 23:35:03,571 [INFO]   ZWD ready: 60 dates
+2026-04-06 23:35:03,571 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,571 [INFO] Using ERA5Corrector (11 km resolution, 3 iterations)
+2026-04-06 23:35:03,571 [INFO] Applying APS correction to displacement...
+2026-04-06 23:35:03,573 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,573 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,574 [INFO] ERA5 APS range: [-0.0000, -0.0000] rad
+2026-04-06 23:35:03,575 [INFO] Iteration 1: Residual APS removed, std = 0.7779 rad
+2026-04-06 23:35:03,576 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,577 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,577 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,578 [INFO] ERA5 APS range: [-0.0000, -0.0000] rad
+2026-04-06 23:35:03,579 [INFO] Iteration 1: Residual APS removed, std = 0.9189 rad
+2026-04-06 23:35:03,580 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,580 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,581 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,581 [INFO] ERA5 APS range: [-0.0000, -0.0000] rad
+2026-04-06 23:35:03,582 [INFO] Iteration 1: Residual APS removed, std = 0.8430 rad
+2026-04-06 23:35:03,583 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,583 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,584 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,584 [INFO] ERA5 APS range: [0.0000, 0.0000] rad
+2026-04-06 23:35:03,585 [INFO] Iteration 1: Residual APS removed, std = 0.8356 rad
+2026-04-06 23:35:03,586 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,586 [INFO]   Time step 5/60: var 76.1→76.7 mm², APS range=[0.0, 0.0] mm
+2026-04-06 23:35:03,587 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,587 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,587 [INFO] ERA5 APS range: [0.0000, 0.0000] rad
+2026-04-06 23:35:03,588 [INFO] Iteration 1: Residual APS removed, std = 1.1537 rad
+2026-04-06 23:35:03,589 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,589 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,589 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,590 [INFO] ERA5 APS range: [0.0000, 0.0000] rad
+2026-04-06 23:35:03,591 [INFO] Iteration 1: Residual APS removed, std = 0.7949 rad
+2026-04-06 23:35:03,592 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,592 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,592 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,593 [INFO] ERA5 APS range: [0.0000, 0.0000] rad
+2026-04-06 23:35:03,594 [INFO] Iteration 1: Residual APS removed, std = 0.7952 rad
+2026-04-06 23:35:03,595 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,596 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,596 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,596 [INFO] ERA5 APS range: [0.0000, 0.0000] rad
+2026-04-06 23:35:03,597 [INFO] Iteration 1: Residual APS removed, std = 0.6598 rad
+2026-04-06 23:35:03,599 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,600 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,600 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,600 [INFO] ERA5 APS range: [0.0000, 0.0000] rad
+2026-04-06 23:35:03,602 [INFO] Iteration 1: Residual APS removed, std = 0.5972 rad
+2026-04-06 23:35:03,603 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,603 [INFO]   Time step 10/60: var 49.2→49.1 mm², APS range=[0.0, 0.0] mm
+2026-04-06 23:35:03,604 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,604 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,604 [INFO] ERA5 APS range: [-0.0000, -0.0000] rad
+2026-04-06 23:35:03,605 [INFO] Iteration 1: Residual APS removed, std = 1.4586 rad
+2026-04-06 23:35:03,606 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,607 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,607 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,607 [INFO] ERA5 APS range: [-0.0000, -0.0000] rad
+2026-04-06 23:35:03,608 [INFO] Iteration 1: Residual APS removed, std = 1.1282 rad
+2026-04-06 23:35:03,609 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,610 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,610 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,610 [INFO] ERA5 APS range: [-0.0000, -0.0000] rad
+2026-04-06 23:35:03,611 [INFO] Iteration 1: Residual APS removed, std = 0.9312 rad
+2026-04-06 23:35:03,612 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,613 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,613 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,613 [INFO] ERA5 APS range: [-0.0000, -0.0000] rad
+2026-04-06 23:35:03,614 [INFO] Iteration 1: Residual APS removed, std = 0.6358 rad
+2026-04-06 23:35:03,615 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,616 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,616 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,616 [INFO] ERA5 APS range: [-0.0000, -0.0000] rad
+2026-04-06 23:35:03,617 [INFO] Iteration 1: Residual APS removed, std = 0.7106 rad
+2026-04-06 23:35:03,618 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,619 [INFO]   Time step 15/60: var 93.4→93.7 mm², APS range=[-0.0, -0.0] mm
+2026-04-06 23:35:03,619 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,619 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,619 [INFO] ERA5 APS range: [0.0000, 0.0000] rad
+2026-04-06 23:35:03,620 [INFO] Iteration 1: Residual APS removed, std = 1.6466 rad
+2026-04-06 23:35:03,621 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,622 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,622 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,622 [INFO] ERA5 APS range: [-0.0000, -0.0000] rad
+2026-04-06 23:35:03,623 [INFO] Iteration 1: Residual APS removed, std = 1.3743 rad
+2026-04-06 23:35:03,624 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,625 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,625 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,625 [INFO] ERA5 APS range: [0.0000, 0.0000] rad
+2026-04-06 23:35:03,626 [INFO] Iteration 1: Residual APS removed, std = 0.7781 rad
+2026-04-06 23:35:03,627 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,627 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,627 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,628 [INFO] ERA5 APS range: [0.0000, 0.0000] rad
+2026-04-06 23:35:03,629 [INFO] Iteration 1: Residual APS removed, std = 0.7578 rad
+2026-04-06 23:35:03,629 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,630 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,630 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,631 [INFO] ERA5 APS range: [0.0000, 0.0000] rad
+2026-04-06 23:35:03,632 [INFO] Iteration 1: Residual APS removed, std = 0.5856 rad
+2026-04-06 23:35:03,633 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,633 [INFO]   Time step 20/60: var 49.2→49.2 mm², APS range=[0.0, 0.0] mm
+2026-04-06 23:35:03,634 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,634 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,634 [INFO] ERA5 APS range: [0.0000, 0.0000] rad
+2026-04-06 23:35:03,635 [INFO] Iteration 1: Residual APS removed, std = 0.7518 rad
+2026-04-06 23:35:03,636 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,637 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,637 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,638 [INFO] ERA5 APS range: [0.0000, 0.0000] rad
+2026-04-06 23:35:03,639 [INFO] Iteration 1: Residual APS removed, std = 1.1012 rad
+2026-04-06 23:35:03,640 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,640 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,641 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,641 [INFO] ERA5 APS range: [-0.0000, -0.0000] rad
+2026-04-06 23:35:03,642 [INFO] Iteration 1: Residual APS removed, std = 1.4172 rad
+2026-04-06 23:35:03,643 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,643 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,644 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,644 [INFO] ERA5 APS range: [-0.0000, -0.0000] rad
+2026-04-06 23:35:03,645 [INFO] Iteration 1: Residual APS removed, std = 0.7437 rad
+2026-04-06 23:35:03,646 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,647 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,647 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,647 [INFO] ERA5 APS range: [-0.0000, -0.0000] rad
+2026-04-06 23:35:03,648 [INFO] Iteration 1: Residual APS removed, std = 1.0262 rad
+2026-04-06 23:35:03,649 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,649 [INFO]   Time step 25/60: var 63.5→64.8 mm², APS range=[-0.0, -0.0] mm
+2026-04-06 23:35:03,650 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,650 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,650 [INFO] ERA5 APS range: [-0.0000, -0.0000] rad
+2026-04-06 23:35:03,651 [INFO] Iteration 1: Residual APS removed, std = 0.9231 rad
+2026-04-06 23:35:03,652 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,653 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,653 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,653 [INFO] ERA5 APS range: [-0.0000, -0.0000] rad
+2026-04-06 23:35:03,654 [INFO] Iteration 1: Residual APS removed, std = 0.7456 rad
+2026-04-06 23:35:03,655 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,655 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,656 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,656 [INFO] ERA5 APS range: [-0.0000, -0.0000] rad
+2026-04-06 23:35:03,657 [INFO] Iteration 1: Residual APS removed, std = 0.5838 rad
+2026-04-06 23:35:03,658 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,658 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,659 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,659 [INFO] ERA5 APS range: [0.0000, 0.0000] rad
+2026-04-06 23:35:03,660 [INFO] Iteration 1: Residual APS removed, std = 0.7594 rad
+2026-04-06 23:35:03,661 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,661 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,661 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,662 [INFO] ERA5 APS range: [0.0000, 0.0000] rad
+2026-04-06 23:35:03,662 [INFO] Iteration 1: Residual APS removed, std = 0.9690 rad
+2026-04-06 23:35:03,663 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,664 [INFO]   Time step 30/60: var 39.6→40.1 mm², APS range=[0.0, 0.0] mm
+2026-04-06 23:35:03,664 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,664 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,664 [INFO] ERA5 APS range: [0.0000, 0.0000] rad
+2026-04-06 23:35:03,665 [INFO] Iteration 1: Residual APS removed, std = 0.8738 rad
+2026-04-06 23:35:03,666 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,666 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,666 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,667 [INFO] ERA5 APS range: [0.0000, 0.0000] rad
+2026-04-06 23:35:03,667 [INFO] Iteration 1: Residual APS removed, std = 0.8179 rad
+2026-04-06 23:35:03,668 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,669 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,669 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,669 [INFO] ERA5 APS range: [0.0000, 0.0000] rad
+2026-04-06 23:35:03,670 [INFO] Iteration 1: Residual APS removed, std = 0.8690 rad
+2026-04-06 23:35:03,671 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,672 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,672 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,672 [INFO] ERA5 APS range: [0.0000, 0.0000] rad
+2026-04-06 23:35:03,673 [INFO] Iteration 1: Residual APS removed, std = 1.0733 rad
+2026-04-06 23:35:03,674 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,674 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,674 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,675 [INFO] ERA5 APS range: [-0.0000, -0.0000] rad
+2026-04-06 23:35:03,676 [INFO] Iteration 1: Residual APS removed, std = 0.9038 rad
+2026-04-06 23:35:03,676 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,677 [INFO]   Time step 35/60: var 59.2→59.8 mm², APS range=[-0.0, -0.0] mm
+2026-04-06 23:35:03,677 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,677 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,677 [INFO] ERA5 APS range: [-0.0000, -0.0000] rad
+2026-04-06 23:35:03,678 [INFO] Iteration 1: Residual APS removed, std = 0.8697 rad
+2026-04-06 23:35:03,679 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,679 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,680 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,680 [INFO] ERA5 APS range: [-0.0000, -0.0000] rad
+2026-04-06 23:35:03,681 [INFO] Iteration 1: Residual APS removed, std = 1.1174 rad
+2026-04-06 23:35:03,682 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,682 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,682 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,683 [INFO] ERA5 APS range: [-0.0000, -0.0000] rad
+2026-04-06 23:35:03,684 [INFO] Iteration 1: Residual APS removed, std = 0.6863 rad
+2026-04-06 23:35:03,685 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,686 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,686 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,687 [INFO] ERA5 APS range: [-0.0000, -0.0000] rad
+2026-04-06 23:35:03,688 [INFO] Iteration 1: Residual APS removed, std = 0.4472 rad
+2026-04-06 23:35:03,689 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,689 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,689 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,689 [INFO] ERA5 APS range: [-0.0000, -0.0000] rad
+2026-04-06 23:35:03,690 [INFO] Iteration 1: Residual APS removed, std = 0.8538 rad
+2026-04-06 23:35:03,691 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,692 [INFO]   Time step 40/60: var 45.6→46.0 mm², APS range=[-0.0, -0.0] mm
+2026-04-06 23:35:03,693 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,693 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,694 [INFO] ERA5 APS range: [0.0000, 0.0000] rad
+2026-04-06 23:35:03,695 [INFO] Iteration 1: Residual APS removed, std = 1.2084 rad
+2026-04-06 23:35:03,696 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,696 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,697 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,697 [INFO] ERA5 APS range: [0.0000, 0.0000] rad
+2026-04-06 23:35:03,698 [INFO] Iteration 1: Residual APS removed, std = 1.1673 rad
+2026-04-06 23:35:03,699 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,699 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,700 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,700 [INFO] ERA5 APS range: [0.0000, 0.0000] rad
+2026-04-06 23:35:03,701 [INFO] Iteration 1: Residual APS removed, std = 1.1673 rad
+2026-04-06 23:35:03,702 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,702 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,702 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,703 [INFO] ERA5 APS range: [0.0000, 0.0000] rad
+2026-04-06 23:35:03,703 [INFO] Iteration 1: Residual APS removed, std = 0.6353 rad
+2026-04-06 23:35:03,704 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,705 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,705 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,705 [INFO] ERA5 APS range: [0.0000, 0.0000] rad
+2026-04-06 23:35:03,706 [INFO] Iteration 1: Residual APS removed, std = 0.9927 rad
+2026-04-06 23:35:03,707 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,708 [INFO]   Time step 45/60: var 41.9→42.3 mm², APS range=[0.0, 0.0] mm
+2026-04-06 23:35:03,708 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,708 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,708 [INFO] ERA5 APS range: [0.0000, 0.0000] rad
+2026-04-06 23:35:03,709 [INFO] Iteration 1: Residual APS removed, std = 0.3797 rad
+2026-04-06 23:35:03,710 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,711 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,711 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,711 [INFO] ERA5 APS range: [-0.0000, -0.0000] rad
+2026-04-06 23:35:03,712 [INFO] Iteration 1: Residual APS removed, std = 0.6200 rad
+2026-04-06 23:35:03,713 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,714 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,714 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,714 [INFO] ERA5 APS range: [-0.0000, -0.0000] rad
+2026-04-06 23:35:03,716 [INFO] Iteration 1: Residual APS removed, std = 0.6232 rad
+2026-04-06 23:35:03,716 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,717 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,717 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,717 [INFO] ERA5 APS range: [-0.0000, -0.0000] rad
+2026-04-06 23:35:03,718 [INFO] Iteration 1: Residual APS removed, std = 1.0572 rad
+2026-04-06 23:35:03,720 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,720 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,720 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,721 [INFO] ERA5 APS range: [-0.0000, -0.0000] rad
+2026-04-06 23:35:03,722 [INFO] Iteration 1: Residual APS removed, std = 1.0930 rad
+2026-04-06 23:35:03,723 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,724 [INFO]   Time step 50/60: var 27.0→27.7 mm², APS range=[-0.0, -0.0] mm
+2026-04-06 23:35:03,724 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,724 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,725 [INFO] ERA5 APS range: [-0.0000, -0.0000] rad
+2026-04-06 23:35:03,726 [INFO] Iteration 1: Residual APS removed, std = 1.0852 rad
+2026-04-06 23:35:03,727 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,728 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,728 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,728 [INFO] ERA5 APS range: [-0.0000, -0.0000] rad
+2026-04-06 23:35:03,729 [INFO] Iteration 1: Residual APS removed, std = 1.7587 rad
+2026-04-06 23:35:03,730 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,731 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,731 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,731 [INFO] ERA5 APS range: [0.0000, 0.0000] rad
+2026-04-06 23:35:03,732 [INFO] Iteration 1: Residual APS removed, std = 1.1120 rad
+2026-04-06 23:35:03,733 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,733 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,734 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,734 [INFO] ERA5 APS range: [0.0000, 0.0000] rad
+2026-04-06 23:35:03,735 [INFO] Iteration 1: Residual APS removed, std = 0.9387 rad
+2026-04-06 23:35:03,736 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,736 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,736 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,736 [INFO] ERA5 APS range: [0.0000, 0.0000] rad
+2026-04-06 23:35:03,737 [INFO] Iteration 1: Residual APS removed, std = 1.0039 rad
+2026-04-06 23:35:03,738 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,739 [INFO]   Time step 55/60: var 111.9→112.8 mm², APS range=[0.0, 0.0] mm
+2026-04-06 23:35:03,739 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,739 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,739 [INFO] ERA5 APS range: [0.0000, 0.0000] rad
+2026-04-06 23:35:03,741 [INFO] Iteration 1: Residual APS removed, std = 0.4844 rad
+2026-04-06 23:35:03,742 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,742 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,742 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,743 [INFO] ERA5 APS range: [0.0000, 0.0000] rad
+2026-04-06 23:35:03,744 [INFO] Iteration 1: Residual APS removed, std = 0.7742 rad
+2026-04-06 23:35:03,744 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,745 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,745 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,745 [INFO] ERA5 APS range: [-0.0000, -0.0000] rad
+2026-04-06 23:35:03,746 [INFO] Iteration 1: Residual APS removed, std = 0.9411 rad
+2026-04-06 23:35:03,747 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,748 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,748 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,748 [INFO] ERA5 APS range: [0.0000, 0.0000] rad
+2026-04-06 23:35:03,749 [INFO] Iteration 1: Residual APS removed, std = 0.8223 rad
+2026-04-06 23:35:03,750 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,751 [INFO] Initialized AtmosphericCorrector with method: era5
+2026-04-06 23:35:03,751 [INFO] Applying ERA5-based atmospheric correction...
+2026-04-06 23:35:03,751 [INFO] ERA5 APS range: [-0.0000, -0.0000] rad
+2026-04-06 23:35:03,752 [INFO] Iteration 1: Residual APS removed, std = 1.7548 rad
+2026-04-06 23:35:03,752 [INFO] Iteration 2: Residual APS removed, std = 0.0000 rad
+2026-04-06 23:35:03,753 [INFO]   Time step 60/60: var 56.8→60.0 mm², APS range=[-0.0, -0.0] mm
+2026-04-06 23:35:03,757 [INFO] ✓ APS correction complete
+2026-04-06 23:35:03,758 [INFO]   Variance reduction: 54.5 → 55.1 mm² (-1.2%)
+2026-04-06 23:35:03,758 [INFO]   APS phase screen: mean=0.0 mm, std=0.0 mm, range=[-0.0, 0.0] mm
+2026-04-06 23:35:03,758 [INFO] Saving outputs...
+2026-04-06 23:35:03,763 [INFO]   Saved to: D:\tinhtuc_insar_project\outputs/
+2026-04-06 23:35:03,764 [INFO]   Report: D:\tinhtuc_insar_project\outputs\aps_correction_report.txt

@@ -1,0 +1,43 @@
+2026-04-06 23:42:49,165 [INFO] ======================================================================
+2026-04-06 23:42:49,165 [INFO] PHASE 3: TRANSFORMER FUSION (NUMPY-BASED)
+2026-04-06 23:42:49,165 [INFO] ======================================================================
+2026-04-06 23:42:49,165 [INFO] Loading Phase 2 outputs...
+2026-04-06 23:42:49,167 [INFO]   Kalman-filtered displacement shape: (60, 95, 95)
+2026-04-06 23:42:49,168 [INFO] Generating synthetic hydrological data...
+2026-04-06 23:42:49,238 [INFO]   Rainfall range: [73.3, 298.4] mm
+2026-04-06 23:42:49,239 [INFO]   Soil moisture range: [0.100, 0.600] m³/m³
+2026-04-06 23:42:49,239 [INFO]   GWL range: [1.0, 6.0] m
+2026-04-06 23:42:49,240 [INFO]   Temperature range: [12.2, 37.0] °C
+2026-04-06 23:42:49,245 [INFO] Creating neural network model...
+2026-04-06 23:42:49,250 [INFO] Training with 20 epochs, batch_size=2...
+2026-04-06 23:43:02,463 [INFO] ======================================================================
+2026-04-06 23:43:02,464 [INFO] PHASE 3: TRANSFORMER FUSION (NUMPY-BASED)
+2026-04-06 23:43:02,464 [INFO] ======================================================================
+2026-04-06 23:43:02,464 [INFO] Loading Phase 2 outputs...
+2026-04-06 23:43:02,467 [INFO]   Kalman-filtered displacement shape: (60, 95, 95)
+2026-04-06 23:43:02,467 [INFO] Generating synthetic hydrological data...
+2026-04-06 23:43:02,542 [INFO]   Rainfall range: [70.6, 299.3] mm
+2026-04-06 23:43:02,543 [INFO]   Soil moisture range: [0.100, 0.600] m³/m³
+2026-04-06 23:43:02,544 [INFO]   GWL range: [1.0, 6.0] m
+2026-04-06 23:43:02,545 [INFO]   Temperature range: [11.5, 36.8] °C
+2026-04-06 23:43:02,550 [INFO] Creating neural network model...
+2026-04-06 23:43:03,169 [INFO] Training with 20 epochs, batch_size=2...
+2026-04-06 23:43:34,076 [INFO] Epoch  5/20: Loss = 24.669506
+2026-04-06 23:43:58,486 [INFO] Epoch 10/20: Loss = 23.563147
+2026-04-06 23:44:23,136 [INFO] Epoch 15/20: Loss = 23.109782
+2026-04-06 23:44:47,493 [INFO] Epoch 20/20: Loss = 22.635865
+2026-04-06 23:44:47,493 [INFO] Evaluating model on full displacement field...
+2026-04-06 23:44:47,613 [INFO]   Predicted 10/31 time steps
+2026-04-06 23:44:47,720 [INFO]   Predicted 20/31 time steps
+2026-04-06 23:44:47,829 [INFO]   Predicted 30/31 time steps
+2026-04-06 23:44:47,840 [INFO]   Residuals range: [-64.34, 78.62] mm
+2026-04-06 23:44:47,840 [INFO]   Residuals mean: 0.399 mm
+2026-04-06 23:44:47,842 [INFO]   Residuals std: 4.956 mm
+2026-04-06 23:44:47,843 [INFO] Computing accuracy metrics...
+2026-04-06 23:44:47,849 [INFO]   Variance (Kalman): 49.55 mm²
+2026-04-06 23:44:47,850 [INFO]   Variance (Fused): 27.03 mm²
+2026-04-06 23:44:47,850 [INFO]   Smoothness (Kalman): 2.971 mm/day
+2026-04-06 23:44:47,850 [INFO]   Smoothness (Fused): 1.509 mm/day
+2026-04-06 23:44:47,850 [INFO] Saving outputs...
+2026-04-06 23:44:47,871 [INFO]   Saved to: D:\tinhtuc_insar_project\outputs/
+2026-04-06 23:44:47,871 [INFO] ✓ Phase 3 COMPLETE - Ready for Phase 4 (GPS Validation)

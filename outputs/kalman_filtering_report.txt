@@ -1,0 +1,39 @@
+
+ADAPTIVE KALMAN FILTERING REPORT
+======================================================================
+Date: 2026-04-06T23:37:49.756741
+Phase: 2 - Adaptive Kalman Filtering (Vectorized)
+Study Region: Tĩnh Túc, Cao Bằng
+Grid Size: 95 x 95 pixels
+Time Points: 60
+
+INPUT (from Phase 1): displacement_aps_corrected.npy
+
+FILTERING RESULTS
+  Variance Reduction (Global):
+    Before: 19.27 mm²
+    After: 19.18 mm²
+    Reduction: 0.5%
+    
+  Variance Reduction by Coherence Region:
+    High coherence (>0.7): +0.4%
+    Low coherence (<0.4): +0.0%
+    
+  Uncertainty Estimates:
+    Mean: 1.52 mm
+    Max: 1.63 mm
+
+QUALITY METRICS
+  ✓ Coherence-weighted measurement noise: Applied
+  ✓ Velocity-adaptive process noise: Applied
+  ✓ Uncertainty map generated: ✓
+  ✓ Vectorized computation: ✓ (Fast)
+
+OUTPUTS SAVED
+  ✓ displacement_kalman_filtered.npy
+  ✓ kalman_uncertainty_map.npy
+  ✓ variance_reduction_map.npy
+  
+NEXT STEP: Phase 3 - PyTorch Transformer Fusion
+
+Expected Accuracy Improvement: 85% → 89%

@@ -1,0 +1,12 @@
+gee_scripts/gee-private-key.json
+__pycache__/
+*.pyc
+.venv/
+.env
+*.log
+outputs/data/
+data/processed/
+data/tinhtuc/
+*.npy
+*.tif
+*.tiff

@@ -1,0 +1,133 @@
+# Scenario Configuration
+# Tĩnh Túc Flood Detection Pipeline
+
+scenarios:
+  scenario1_before_after:
+    name: "Single Time-Point Before-After Analysis"
+    enabled: true
+    duration_days: 3
+    complexity: "low"
+    description: "Quick flood detection by comparing pre-flood and post-flood images"
+    
+    parameters:
+      reference_date: null  # Auto-select dry season image if null
+      analysis_date: null   # Auto-select after heavy rain if null
+      temporal_window_days: 5  # Look for images within 5 days
+      
+    output:
+      - water_extent_before.tif
+      - water_extent_after.tif
+      - change_map.tif
+      - flood_extent.tif
+      - comparison.png
+      - accuracy_report.txt
+      
+  scenario2_time_series:
+    name: "Time Series Analysis with Trend Detection"
+    enabled: true
+    duration_days: 14
+    complexity: "medium"
+    description: "Long-term trend detection using full 1,304 ASCENDING images"
+    
+    parameters:
+      subset: "ascending"  # Process ASCENDING track
+      start_date: "2019-01-01"
+      end_date: "2025-12-31"
+      temporal_smoothing: "kalman"  # Options: kalman, rolling_mean, exponential
+      smoothing_window: 10  # days
+      
+    algorithms:
+      kalman_filter:
+        state_dim: 4  # [level, velocity, acceleration, correlation]
+        process_noise: 0.01
+        measurement_noise: 0.1
+        initial_state: [0, 0, 0, 0.5]
+        
+      cusum_change_detection:
+        threshold: 3.0  # σ
+        window_length: 30  # days
+        drift: 0.5
+        
+    output:
+      - water_timeseries.nc
+      - area_timeseries.csv
+      - trend_map.tif
+      - changepoint_map.tif
+      - alerts.json
+      - timeseries_plot.png
+      - trend_analysis.txt
+      
+  scenario3_asc_desc_comparison:
+    name: "ASCENDING vs DESCENDING Robustness Validation"
+    enabled: true
+    duration_days: 21
+    complexity: "medium-high"
+    description: "Validate method robustness across different viewing geometries"
+    
+    parameters:
+      ascending_subset: true
+      descending_subset: true
+      coregistration_method: "affine"  # Options: affine, thin_plate_spline
+      agreement_metric: "iou"  # Options: iou, f1, kappa
+      
+    output:
+      - ascending_water_timeseries.nc
+      - descending_water_timeseries.nc
+      - agreement_map.tif
+      - iou_timeseries.csv
+      - comparison_report.txt
+      - sensitivity_analysis.pdf
+      - recommendations.txt
+      
+  scenario4_anomaly_detection:
+    name: "Real-Time Anomaly Detection & Early Warning"
+    enabled: true
+    duration_days: 30
+    complexity: "high"
+    description: "Automated detection of anomalies for operational early warning"
+    
+    parameters:
+      baseline_period_start: "2019-01-01"
+      baseline_period_end: "2024-12-31"
+      test_period_start: "2025-01-01"
+      test_period_end: "2025-12-31"
+      anomaly_method: "zscore"  # Options: zscore, mad, isolation_forest
+      
+    thresholds:
+      low_alert: 2.0  # σ
+      medium_alert: 2.5
+      high_alert: 3.0
+      critical_alert: 3.5
+      
+    output:
+      - anomaly_baseline_stats.json
+      - anomaly_map.tif
+      - alert_levels.tif
+      - anomaly_timeseries.csv
+      - alert_bulletin.json
+      - performance_metrics.json
+      - alert_protocols.txt
+
+# Global parameters
+global:
+  study_area_name: "Tĩnh Túc Mining Region"
+  location: "Nguyên Bình District, Cao Bằng Province, Vietnam"
+  bbox: [105.87, 22.57, 106.08, 22.78]  # WGS84
+  crs_target: "EPSG:32648"  # UTM Zone 48N
+  
+  # Data sources
+  data_sources:
+    raw_sentinel1: "data/raw/sentinel1"
+    processed: "data/processed"
+    dem: "data/dem"  # Optional local DEM
+    
+  # Logging
+  logging:
+    level: "INFO"  # Options: DEBUG, INFO, WARNING, ERROR
+    log_file: "logs/pipeline.log"
+    console_output: true
+    
+  # Validation
+  validation:
+    reference_data_path: null  # Path to Google Earth validation data
+    accuracy_metrics: ["accuracy", "precision", "recall", "f1"]

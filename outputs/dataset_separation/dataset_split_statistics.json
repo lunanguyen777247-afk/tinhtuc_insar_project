@@ -1,0 +1,69 @@
+{
+  "ascending": {
+    "statistics": {
+      "total_images": 1304,
+      "date_range": {
+        "start": "2019-01-01",
+        "end": "2025-12-31",
+        "span_days": 2556
+      },
+      "frequency": {
+        "average_gap_days": 2.0,
+        "max_gap_days": "2",
+        "num_gaps_gt1day": 1253
+      },
+      "relative_orbits": [
+        24,
+        25,
+        26
+      ],
+      "num_relative_orbits": 3
+    },
+    "geometry": {
+      "orbit_direction": "ASCENDING",
+      "los_direction": "NE\u2192SW (ascending)",
+      "incident_angle_deg": 34,
+      "lrd_direction": "Horizontal component: E-W, Vertical component: relative to LOS",
+      "suitable_for_detection": {
+        "water_surface": "Good (specular reflection)",
+        "subsidence": "Excellent (vertical + EW component)",
+        "horizontal_deformation": "Moderate (limited LOS sensitivity)"
+      }
+    }
+  },
+  "descending": {
+    "statistics": {
+      "total_images": 1253,
+      "date_range": {
+        "start": "2019-01-02",
+        "end": "2025-12-30",
+        "span_days": 2554
+      },
+      "frequency": {
+        "average_gap_days": 2.04,
+        "max_gap_days": "3",
+        "num_gaps_gt1day": 1252
+      },
+      "relative_orbits": [
+        131,
+        132
+      ],
+      "num_relative_orbits": 2
+    },
+    "geometry": {
+      "orbit_direction": "DESCENDING",
+      "los_direction": "SW\u2192NE (descending)",
+      "incident_angle_deg": 34,
+      "lrd_direction": "Horizontal component: W-E, Vertical component: relative to LOS",
+      "suitable_for_detection": {
+        "water_surface": "Good (specular reflection)",
+        "subsidence": "Excellent (vertical + EW component)",
+        "horizontal_deformation": "Moderate (limited LOS sensitivity)"
+      }
+    }
+  },
+  "balance": {
+    "count_ratio": 1.04,
+    "balanced": true
+  }
+}

@@ -1,0 +1,76 @@
+# Water Detection Configuration
+# Tĩnh Túc Flood Detection Pipeline
+
+water_detection:
+  # Water Detection Methods
+  methods:
+    # Method 1: Fixed Threshold
+    fixed_threshold:
+      enabled: true
+      vv_threshold: -12.0  # dB, water typically has VV < -12 dB
+      vh_threshold: -19.0  # dB
+      
+    # Method 2: Adaptive Otsu Threshold
+    otsu_threshold:
+      enabled: true
+      local_window_size: 100  # pixels
+      num_bins: 256
+      
+    # Method 3: VH/VV Ratio
+    ratio_method:
+      enabled: true
+      water_ratio_max: 0.25  # VH/VV ratio for water
+      water_ratio_min: 0.05
+      vegetation_ratio_min: 0.6
+      
+    # Method 4: Change Detection
+    change_detection:
+      enabled: true
+      change_threshold: -0.10  # ΔI < -0.1 indicates water
+      definite_water_threshold: -0.30
+      
+  # Morphological Filtering
+  morphological_filtering:
+    enabled: true
+    opening_kernel_size: 3  # pixels
+    closing_kernel_size: 3  # pixels
+    remove_small_objects: true
+    min_object_area: 100  # pixels² (~100m × 100m for 10m resolution)
+    
+  # Confidence Scoring
+  confidence:
+    enabled: true
+    method: "ensemble"  # Options: max, average, voting
+    min_confidence: 0.5  # 50% agreement required
+    
+  # Post-Processing
+  post_processing:
+    enabled: true
+    gap_filling: true
+    smoothing: "median"  # Options: median, gaussian
+    smoothing_kernel: 3
+    
+  # Output Configuration
+  output:
+    format: "GeoTIFF"
+    compression: "DEFLATE"
+    output_dir: "data/processed/water_masks"
+    generate_confidence: true
+    generate_rgb_composite: true  # RGB visualization
+    
+# Thresholds for different conditions
+thresholds:
+  normal_conditions:
+    vv_water: -12.0
+    vh_vv_ratio: 0.25
+    confidence_min: 0.6
+    
+  rainy_conditions:
+    vv_water: -11.0  # More sensitive
+    vh_vv_ratio: 0.30
+    confidence_min: 0.5
+    
+  dry_conditions:
+    vv_water: -13.0  # Less sensitive
+    vh_vv_ratio: 0.20
+    confidence_min: 0.7
