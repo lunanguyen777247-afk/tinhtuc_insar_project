@@ -1,0 +1,35 @@
+modules = ["python-3.12", "nodejs-20", "bash"]
+[agent]
+expertMode = true
+stack = "BEST_EFFORT_FALLBACK"
+
+[nix]
+channel = "stable-25_05"
+packages = ["cairo", "curl", "ffmpeg-full", "freetype", "geos", "ghostscript", "glibcLocales", "gobject-introspection", "gtk3", "hdf5", "libjpeg", "libjpeg_turbo", "libpng", "libxcrypt", "libyaml", "netcdf", "openssh", "pkg-config", "proj", "qhull", "tcl", "tk", "which", "xsimd", "zlib"]
+
+[workflows]
+runButton = "Project"
+
+[[workflows.workflow]]
+name = "Project"
+mode = "parallel"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Run Pipeline"
+
+[[workflows.workflow]]
+name = "Run Pipeline"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python3 run_pipeline.py"
+
+[workflows.workflow.metadata]
+outputType = "console"
+
+[deployment]
+deploymentTarget = "vm"
+run = ["python3", "run_pipeline.py"]

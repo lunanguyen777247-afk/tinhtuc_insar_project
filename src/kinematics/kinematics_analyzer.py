@@ -324,7 +324,8 @@ class TemporalAnalyzer:
         wavelet = "cmor1.5-1.0"
         n = len(ts1)
         if periods is None:
-            periods = np.geomspace(4, n // 4, 20) * dt
+            max_period = max(n // 4, 5)
+            periods = np.geomspace(4, max_period, 20) * dt
         scales = periods / (pywt.scale2frequency(wavelet, 1) * dt)
 
         cwt1, _ = pywt.cwt(ts1, scales, wavelet, sampling_period=dt)
